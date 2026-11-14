@@ -24,6 +24,7 @@ import { checkNoGroundPinDefined } from "./check-no-ground-pin-defined"
 import { checkNoPowerPinDefined } from "./check-no-power-pin-defined"
 import { checkPadPadClearance } from "./check-pad-pad-clearance"
 import { checkHoleTraceClearance } from "./check-hole-trace-clearance"
+import { checkHoleViaClearance } from "./check-hole-via-clearance"
 import { checkPadTraceClearance } from "./check-pad-trace-clearance"
 import { checkPcbComponentOverCutout } from "./check-pcb-component-over-cutout"
 import { checkPcbComponentsMissingCourtyard } from "./check-pcb-components-missing-courtyard"
@@ -60,6 +61,7 @@ export async function runAllPlacementChecks(
   const errors = [
     ...checkCopperToBoardEdgeClearance(circuitJson),
     ...checkViasInPads(circuitJson),
+    ...checkHoleViaClearance(circuitJson),
     ...checkPcbComponentsOutOfBoard(circuitJson),
     ...checkPcbComponentOverCutout(circuitJson),
     ...checkPcbBoardSupport(circuitJson),
